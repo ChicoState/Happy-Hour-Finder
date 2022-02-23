@@ -119,6 +119,7 @@ body {
 }
 
 .form-control {
+    padding-left: 4px;
     margin: 20px;
     height: 60px;
     font-size: 32px;
@@ -133,4 +134,9 @@ body {
     font-weight: bold;
     margin-bottom: 16px;
     margin-top: 16px;
+}
+.form-button {
+    padding: 0px 16px;
+    height: 60px;
+    background-color: orange;
 }
