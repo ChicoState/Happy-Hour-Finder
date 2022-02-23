@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+    <body>
+        <div class="wrapper">
+    <div class="name_container">
+        <div class="name">Happy Hour Finder</div>
+        <div class="designation">The Best Place To Find Drink &amp; Food Deals.</div>
+    </div>
+</div>
+        <div class="hero-container">
+            
+            <p class="im">Enter phone number to get notified when we go live.</p>
+            <form>
+                <input class="form-control" placeholder="(###)###-####" type="text" placeholer="input phone number"/>
+            </form> 
+        </div>
+          <div class="named">Current Happy Hour Deals In Chico</div>
+        <div class="sheet-container">
+        {% include "Sheet1.html" %}    
+        </div>
+<script >
+
+            var bubbleLifeTime = 20;
+var noOfBubbles = 100;
+
+var wrapper = document.querySelector('.wrapper');
+var bubbles = [];
+
+init();
+
+function init() {
+    var bubble;
+    for(var i = 0; i < noOfBubbles; i++) {
+      bubble = createBubble();
+      wrapper.appendChild(bubble);
+    }
+}
+
+function createBubble() {
+  var circleContainer = document.createElement('div');
+  circleContainer.classList.add('circle_container');
+  circleContainer.style.transform = "rotate(" + Math.floor(Math.random() * 360) + "deg)";
+
+  var circle = createCircle();
+  circleContainer.appendChild(circle);
+
+  return circleContainer;
+}
+
+function createCircle() {
+  var circle = document.createElement('div');
+  circle.classList.add('circle');
+  circle.style.animationDelay = (Math.random() * bubbleLifeTime) + 's';
+
+  var side = (5 + Math.floor(Math.random() * 5)) + 'px';
+  circle.style.width = side;
+  circle.style.height = side;
+
+  return circle;
+}
+        </script>
+    </body>
+</html>
