@@ -21,13 +21,16 @@
     </div>
 </div>
         <div class="hero-container">
-            
+             {% if messages %}
+ <p class="im">Thank you well reach out when were live.</p>
+             {% else %}
             <p class="im">Enter phone number to get notified when we go live.</p>
             <form method="POST">
                  {% csrf_token %}
                 <input name="phoneNumber" class="form-control" placeholder="(###)###-####" type="text" placeholer="input phone number"/>
                 {% comment %} <button type="submit" class="form-button">Submit</button> {% endcomment %}
             </form> 
+            {% endif %}
         </div>
           <div class="named">Current Happy Hour Deals In Chico</div>
         <div class="sheet-container">

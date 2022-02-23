@@ -8,5 +8,6 @@ def home_view(request):
         if form.is_valid():
             print("yayo")
             form.save()
+            return render(request, "index.html", {'messages': "success"})
     context = {}
     return render(request, "index.html",context)
