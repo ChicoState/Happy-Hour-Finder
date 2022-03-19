@@ -4,6 +4,7 @@ from django.db import models
 # Create your models here.
 
 class Event(models.Model):
+
     eventTitle= models.CharField(verbose_name= 'Event Title', max_length=100)
 
     EVENT_FREQ_PER_MONTH = [
@@ -32,6 +33,8 @@ class Event(models.Model):
     photos= models.ImageField()
     
 
-# class Location(models.Model):
-#     locationName
-#     email= models.CharField(max_length=200)
+class Location(models.Model):
+    locationName= models.CharField(verbose_name='Business or Location Name', max_length=100)
+    listing= models.URLField(verbose_name='Google Maps Listing')
+    website= models.URLField(verbose_name='Website')
+    
