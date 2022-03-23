@@ -3,14 +3,23 @@ from django.db import models
 
 # Create your models here.
 
+class Location(models.Model):
+    locationName= models.CharField(verbose_name='Business or Location Name', max_length=100)
+    listing= models.URLField(verbose_name='Google Maps Listing')
+    website= models.URLField(verbose_name='Website')
+
+    
+
 class Event(models.Model):
+
+    location= models.ForeignKey(Location, on_delete= models.CASCADE)
 
     eventTitle= models.CharField(verbose_name= 'Event Title', max_length=100)
 
     EVENT_FREQ_PER_MONTH = [
-        (0, 'One-off Event')
-        (1, 'Monthly')
-        (2, 'Every Other Week')
+        (0, 'One-off Event'),
+        (1, 'Monthly'),
+        (2, 'Every Other Week'),
         (4, 'Weekly')   
     ]
     frequency= models.PositiveSmallIntegerField(verbose_name='Event Frequency', choices=EVENT_FREQ_PER_MONTH, default= 4)
@@ -21,11 +30,11 @@ class Event(models.Model):
 
 
     TYPE_CHOICES = [
-        ('HH', 'Happy Hour')
-        ('SP', 'Student Special')
+        ('HH', 'Happy Hour'),
+        ('SP', 'Student Special'),
         ('HS', 'Holiday Special')
     ]
-    type= models.CharField(verbose_name='Event Type', choices= TYPE_CHOICES)
+    type= models.CharField(verbose_name='Event Type', choices= TYPE_CHOICES, max_length=100)
     #need to add price range
 
     description= models.TextField(verbose_name='Event Description', max_length=2000)
@@ -33,8 +42,5 @@ class Event(models.Model):
     photos= models.ImageField()
     
 
-class Location(models.Model):
-    locationName= models.CharField(verbose_name='Business or Location Name', max_length=100)
-    listing= models.URLField(verbose_name='Google Maps Listing')
-    website= models.URLField(verbose_name='Website')
+
     
