@@ -3,16 +3,16 @@ from django.db import models
 
 # Create your models here.
 
-class Location(models.Model):
-    locationName= models.CharField(verbose_name='Business or Location Name', max_length=100)
-    listing= models.URLField(verbose_name='Google Maps Listing')
-    website= models.URLField(verbose_name='Website')
+# class Location(models.Model):
+#     locationName= models.CharField(verbose_name='Business or Location Name', max_length=100)
+#     listing= models.URLField(verbose_name='Google Maps Listing')
+#     website= models.URLField(verbose_name='Website')
 
     
 
 class Event(models.Model):
 
-    location= models.ForeignKey(Location, on_delete= models.CASCADE)
+    #location= models.ForeignKey(Location, on_delete= models.CASCADE)
 
     eventTitle= models.CharField(verbose_name= 'Event Title', max_length=100)
 
