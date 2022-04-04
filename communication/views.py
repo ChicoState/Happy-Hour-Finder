@@ -4,7 +4,6 @@ from .models import Event, Location
 # Create your views here.
 def home_view(request):
     array = Location.objects.all()
-    print(array)
     if request.method == 'POST':
         form = ContactForm(request.POST)
         print('gwg')
