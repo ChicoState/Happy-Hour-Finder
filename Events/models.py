@@ -14,7 +14,7 @@ class Location(models.Model):
 
 class Event(models.Model):
 
-    location= models.ForeignKey(Location, on_delete= models.CASCADE, null= False)
+    location= models.ForeignKey(Location, on_delete= models.CASCADE, null= False )
 
     eventTitle= models.CharField(verbose_name= 'Event Title', max_length=100, null= False)
 
