@@ -78,16 +78,16 @@ WSGI_APPLICATION = 'base.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'd99678diphp5u6',
-#         'HOST': 'ec2-52-205-3-3.compute-1.amazonaws.com',
-#         'PORT': 5432,
-#         'USER': 'ecjccqpliexgie',
-#         'PASSWORD': 'd6c389aa78a1d7799e9f480b0f0099fbe40ac1ccb01d75fc4d6b23ce28b6940b',
-# }
-# }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'd99678diphp5u6',
+        'HOST': 'ec2-52-205-3-3.compute-1.amazonaws.com',
+        'PORT': 5432,
+        'USER': 'ecjccqpliexgie',
+        'PASSWORD': 'd6c389aa78a1d7799e9f480b0f0099fbe40ac1ccb01d75fc4d6b23ce28b6940b',
+}
+}
 # postgres://ecjccqpliexgie:d6c389aa78a1d7799e9f480b0f0099fbe40ac1ccb01d75fc4d6b23ce28b6940b@ec2-52-205-3-3.compute-1.amazonaws.com:5432/d99678diphp5u6
 
 # postgres://nyjgwguaismfkv:ad4fe38641f0eea146954691fac5678b715f41aa30813761e97b1a0a8aa8235f@ec2-3-218-47-9.compute-1.amazonaws.com:5432/dc2ro1vj5k090m
@@ -100,16 +100,16 @@ WSGI_APPLICATION = 'base.wsgi.application'
 #     }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'dc2ro1vj5k090m',
-        'HOST': 'ec2-3-218-47-9.compute-1.amazonaws.com',
-        'PORT': 5432,
-        'USER': 'nyjgwguaismfkv',
-        'PASSWORD': 'ad4fe38641f0eea146954691fac5678b715f41aa30813761e97b1a0a8aa8235f',
-}
-}
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'dc2ro1vj5k090m',
+#         'HOST': 'ec2-3-218-47-9.compute-1.amazonaws.com',
+#         'PORT': 5432,
+#         'USER': 'nyjgwguaismfkv',
+#         'PASSWORD': 'ad4fe38641f0eea146954691fac5678b715f41aa30813761e97b1a0a8aa8235f',
+# }
+# }
 
 
 # Password validation
