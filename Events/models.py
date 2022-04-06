@@ -8,6 +8,13 @@ class Location(models.Model):
     locationName= models.CharField(verbose_name='Business or Location Name', max_length=100, null= False)
     listing= models.URLField(verbose_name='Google Maps Listing', null= False)
     website= models.URLField(verbose_name='Business or Location Website', null= True)
+    LOCATION_TYPE_CHOICES = [
+        ('O', 'Other'),
+        ('R', 'Restaurant'),
+        ('B', 'Bar')   
+    ]
+    type= models.CharField(verbose_name= 'Type of Establishment', null= True, max_length= 10, choices= LOCATION_TYPE_CHOICES, default= 'B')
+
 
     def __str__(self):
         return '{}'.format(self.locationName)
