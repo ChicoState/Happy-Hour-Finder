@@ -61,13 +61,13 @@ class Event(models.Model):
     
 
 #https://docs.djangoproject.com/en/4.0/topics/forms/modelforms/#django.forms.ModelForm
-class EventForm(ModelForm):
-    class Meta:
-        model = Event
-        exclude = ['active']
+# class EventForm(ModelForm):
+#     class Meta:
+#         model = Event
+#         exclude = ['active']
 
-# create a new Event Form
-form = EventForm(request.POST)
-new_event = form.save()
+# # create a new Event Form
+# form = EventForm(request.POST)
+# new_event = form.save()
 
     

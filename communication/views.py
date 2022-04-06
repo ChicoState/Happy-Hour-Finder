@@ -1,7 +1,9 @@
 from django.shortcuts import render
-from .forms import ContactForm
-from .models import Event, Location
+# from .forms import ContactForm
+from Events.models import Event, Location
+
 # Create your views here.
+
 def home_view(request):
     array = Location.objects.all()
     if request.method == 'POST':
