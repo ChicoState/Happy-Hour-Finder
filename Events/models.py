@@ -1,5 +1,6 @@
 from tabnanny import verbose
 from django.db import models
+from django.forms import ModelForm
 
 # Create your models here.
 
@@ -36,7 +37,7 @@ class Event(models.Model):
     ]
     dayOfWeek= models.CharField(verbose_name='Day of Week', choices=DAY_OF_WEEK, max_length=10, null= False)
   
-    active= models.BooleanField(verbose_name='Active', default= True)
+    active= models.BooleanField(verbose_name='Active', default= False)
     #need to add dependent verification level
 
 
@@ -59,5 +60,14 @@ class Event(models.Model):
         return '{}'.format(self.eventTitle)
     
 
+#https://docs.djangoproject.com/en/4.0/topics/forms/modelforms/#django.forms.ModelForm
+class EventForm(ModelForm):
+    class Meta:
+        model = Event
+        exclude = ['active']
+
+# create a new Event Form
+form = EventForm(request.POST)
+new_event = form.save()
 
     
