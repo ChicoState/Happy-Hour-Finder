@@ -1,2 +1,11 @@
 from django.forms import ModelForm
-from Events.models import Event, Location
+from django import forms
+from .models import Event, Location
+
+
+class EventForm(forms.ModelForm):
+    class Meta:
+        model = Event
+        exclude = ['active']
+
+

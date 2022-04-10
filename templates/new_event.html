@@ -1,0 +1,12 @@
+
+
+{% block content %}
+    <div class="new-event">
+        <h2>Share a New Event!</h2>
+        <form class="site-form"method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit"value="Submit"/>
+        </form>
+    </div>
+{% endblock %}

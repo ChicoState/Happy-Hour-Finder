@@ -16,8 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
+from Events.views import submitEvent
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',include('')),
     path('',include('communication.urls')),
+    path('create/', submitEvent),
 ]
