@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',include('')),
     path('',include('communication.urls')),
-    path('create/', submitEvent),
+    path('newEvent/', submitEvent),
 ]
