@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'communication',
 #myApps
     'Events',
+    'smoketest',
 ]
 
 MIDDLEWARE = [

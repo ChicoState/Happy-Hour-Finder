@@ -24,4 +24,5 @@ urlpatterns = [
     # path('',include('')),
     path('',include('communication.urls')),
     path('newEvent/', submitEvent),
+    path('smoketest/', include('smoketest.urls')),
 ]
