@@ -23,6 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',include('')),
     path('',include('communication.urls')),
-    path('newEvent/', submitEvent),
+    path('event/', include('Events.urls')),
+    path('user/',include('user.urls')),
     path('smoketest/', include('smoketest.urls')),
 ]
