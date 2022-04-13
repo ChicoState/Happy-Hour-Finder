@@ -6,6 +6,8 @@ from django.forms import ModelForm
 
 class Location(models.Model):
     locationName= models.CharField(verbose_name='Business or Location Name', max_length=100, null= False)
+    address = models.CharField(max_length=200, null= True, blank=True)
+    picture = models.CharField(max_length=200, null= True, blank=True)
     listing= models.URLField(verbose_name='Google Maps Listing', null= False)
     website= models.URLField(verbose_name='Business or Location Website', null= True)
     LOCATION_TYPE_CHOICES = [
