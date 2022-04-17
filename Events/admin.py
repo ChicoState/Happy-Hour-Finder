@@ -8,9 +8,12 @@ class LocationInline(admin.StackedInline):
     model = Location
 
 class EventAdmin(admin.ModelAdmin):
-    inlines = [
-        LocationInline,
-    ]
+    # inlines = [
+    #     LocationInline,
+    # ]
+    list_filter = ('dayOfWeek', 'active','location__locationName')
+    list_display = ('eventTitle','dayOfWeek','type','active')
+    
 
-admin.site.register(Event)
+admin.site.register(Event, EventAdmin)
 admin.site.register(Location)
