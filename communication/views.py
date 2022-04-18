@@ -8,6 +8,7 @@ from django.views.generic import ListView
 
 def home_view(request):
     array = Location.objects.all()
+    print(array)
     paginator = Paginator(array, 50)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
