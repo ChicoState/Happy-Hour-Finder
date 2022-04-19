@@ -8,12 +8,18 @@ from django.views.generic import ListView
 
 def home_view(request):
     array = Location.objects.all()
-    print(array)
     paginator = Paginator(array, 50)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
+    allLocations = Location.objects.order_by('-locationName')
+    eventList=[]
+    for x in allLocations:
+        eventList.append(Event.objects.filter(location = x, active = True).order_by('-dayOfWeek'))
+    print(eventList)
+    for x in eventList:
+        print(x)
     context = {
-        "location": page_obj
+        "location": page_obj,
         }
     return render(request, "index.html",context)
 
