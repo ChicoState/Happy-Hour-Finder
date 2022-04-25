@@ -4,9 +4,6 @@ from .models import *
 
 # Register your models here.
 
-
-
-
 class LocationInline(admin.StackedInline):
     model = Location
 
@@ -24,9 +21,6 @@ class EventAdmin(admin.ModelAdmin):
     @admin.action(description='Mark selected Events as Inactive')
     def make_inactive(self, request, queryset):
         queryset.update(active= False)
-
-    
-
 
 
 
