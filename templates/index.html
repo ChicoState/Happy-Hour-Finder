@@ -51,7 +51,7 @@
 <div class="container my-12 mx-auto px-4 md:px-12">
     <div class="flex flex-wrap -mx-1 lg:-mx-4">
 
-        {% for local in location %}
+        {% for local in locationData %}
 
         <!-- Column -->
         <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
@@ -74,15 +74,15 @@
                 </a> {% endcomment %}
                  <a href="#">
                     
-                    <img style="min-height: 300px; max-height: 300px;" alt="Placeholder" class="block h-auto w-full" src={{local.picture}}>
+                    <img style="min-height: 300px; max-height: 300px;" alt="Placeholder" class="block h-auto w-full" src={{local.location.picture}}>
                 </a>
                 
 
                 <header class="flex  justify-between leading-tight   flex-col">
                     <div>
                     <h1 class="text-lg text-left m-2">
-                        <a class="no-underline hover:underline text-black " href="#">
-                            {{local.locationName}}
+                        <a class="no-underline  text-black " >
+                            {{local.location.locationName}}
                         </a>
                     </h1>
                     <div class="flex my-2">
@@ -127,29 +127,101 @@
     </li>
     
 </ul>
-                    </div>
+                </div>
                     <div class="bg-gray-300 w-full p-4"> 
-                      <div id="content_1{{local.id}}" class="tabcontent{{local.id}}"> 
-                                      <p class="text-black">This is an event on Monday</p>
+                   
+                      {% comment %} <div id="content_1{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Monday</p>
+                        
+</div>   
+  <div id="content_2{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Tuesday</p>
+                        
+</div>   
+<div id="content_3{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Wednesday</p>
+                        
+</div>   
+<div id="content_4{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Thursday</p>
+                        
 </div> 
-<div id="content_2{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	<p class="text-black">This is an event on Tuesday</p>
-</div>
-    <div id="content_3{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	<p class="text-black">This is an event on Wednesday</p>
-</div>         
-  <div id="content_4{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	<p class="text-black">This is an event on Thursday</p>
-</div>    
 <div id="content_5{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	<p class="text-black">This is an event on Friday</p>
-</div>  
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Friday</p>
+                        
+</div> 
 <div id="content_6{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	<p class="text-black">This is an event on Saturday</p>
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Saturday</p>
+                        
 </div> 
 <div id="content_7{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	<p class="text-black">This is an event on Sunday</p>
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        <p class="text-black">No event for this day Sunday</p>
+</div>   {% endcomment %}
+                    
+                      {% for event in local.events  %}
+                      
+                      <div id="content_1{{local.id}}" class="tabcontent{{local.id}}"> 
+                        
+                        {% if event.dayOfWeek == 'MO'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Monday</p>
+                        {% endif %}
+                                    </div> 
+                       <div id="content_2{{local.id}}" class="tabcontent{{local.id}}" style="display:none;"> 
+                      
+                        {% if event.dayOfWeek == 'TU'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Tuesday</p>
+                        {% endif %}
+                        </div> 
+                        
+                         <div id="content_3{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+	{% if event.dayOfWeek == 'WE'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Wednesday</p>
+                        {% endif %}
 </div>   
+<div id="content_4{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+		{% if event.dayOfWeek == 'TH'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Thursday</p>
+                        {% endif %}
+</div>    
+<div id="content_5{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+{% if event.dayOfWeek == 'FR'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Friday</p>
+                        {% endif %}
+</div>  
+
+<div id="content_6{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+	{% if event.dayOfWeek == 'SA'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Saturday</p>
+                        {% endif %}
+</div> 
+<div id="content_7{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
+	{% if event.dayOfWeek == 'SU'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        <p class="text-black">No event for this day Sunday</p>
+                        {% endif %}
+</div>   
+                        {% endfor %} 
+                        
 </div>
         
                    
