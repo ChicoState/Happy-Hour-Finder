@@ -8,7 +8,7 @@ from django.views.generic import ListView
 
 def home_view(request):
     locationData = []
-    location = Location.objects.filter(event__active = True)
+    location = Location.objects.distinct().filter(event__active = True)
     for local in location:
         events = Event.objects.filter(location = local, active = True).order_by('-dayOfWeek')
         data = {
