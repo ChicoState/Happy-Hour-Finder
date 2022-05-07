@@ -66,7 +66,7 @@ class Event(models.Model):
     # photos= models.ImageField()
 
     def __str__(self):
-        return '{}'.format(self.eventTitle)
+        return '{}'.format(self.eventTitle) + '{}'.format(self.location)
     
 
 #https://docs.djangoproject.com/en/4.0/topics/forms/modelforms/#django.forms.ModelForm

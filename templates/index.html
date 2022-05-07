@@ -96,138 +96,154 @@
 
  
                         <ul class="flex flex-wrap  text-sm font-medium text-center text-gray-500 border-b border-gray-200 dark:border-gray-700 dark:text-gray-400">
-    <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_1{{local.id}}', 'content_1{{local.id}}', {{local.id}});" id="tb_1" 
+    
+                          <li class="mr-2">
+        <a href="javascript:rudrSwitchTab('tb_1{{ forloop.counter }}', 'content_1{{ forloop.counter }}',{{ forloop.counter }}, 'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Monday');" id="tb_1" 
          aria-current="page" class="inline-block p-4 text-blue-600 bg-gray-300 
-        rounded-t-lg active cursor-pointer dark:bg-gray-800 dark:text-blue-500 tabmenu{{local.id}} active">M</a>
+        rounded-t-lg active cursor-pointer dark:bg-gray-800 dark:text-blue-500 tabmenu{{ forloop.counter }} ">M</a>
     </li>
     <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_2', 'content_2{{local.id}}', {{local.id}});" id="tb_2" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
-        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{local.id}}">T</a>
+        <a href="javascript:rudrSwitchTab('tb_2{{ forloop.counter }}', 'content_2{{ forloop.counter }}',{{ forloop.counter }}, 'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Tuesday');" id="tb_2" class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
+        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{ forloop.counter }} ">T</a>
     </li>
     <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_3', 'content_3{{local.id}}', {{local.id}});" id="tb_3"   class="inline-block p-4 rounded-t-lg hover:text-gray-600 
-        hover:bg-gray-50 cursor-pointer dark:hover:bg-gray-800 dark:hover:text-gray-300 tabmenu{{local.id}}">W</a>
+        <a href="javascript:rudrSwitchTab('tb_3{{ forloop.counter }}', 'content_3{{ forloop.counter }}',{{ forloop.counter }}, 'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Wednesday');" id="tb_3"   class="inline-block p-4 rounded-t-lg hover:text-gray-600 
+        hover:bg-gray-50 cursor-pointer dark:hover:bg-gray-800 dark:hover:text-gray-300 tabmenu{{ forloop.counter }}">W</a>
     </li>
     <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_4', 'content_4{{local.id}}', {{local.id}});" id="tb_4"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
-        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{local.id}}">TH</a>
+        <a href="javascript:rudrSwitchTab('tb_4{{ forloop.counter }}', 'content_4{{ forloop.counter }}',{{ forloop.counter }},'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Thursday');" id="tb_4"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
+        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{ forloop.counter }}">TH</a>
     </li>
       <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_5', 'content_5{{local.id}}', {{local.id}});" id="tb_5"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
-        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{local.id}}">F</a>
+        <a href="javascript:rudrSwitchTab('tb_5{{ forloop.counter }}', 'content_5{{ forloop.counter }}',{{ forloop.counter }},'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Friday');" id="tb_5"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
+        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{ forloop.counter }}">F</a>
     </li>
       <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_6', 'content_6{{local.id}}', {{local.id}});" id="tb_6"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
-        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{local.id}}">S</a>
+        <a href="javascript:rudrSwitchTab('tb_6{{ forloop.counter }}', 'content_6{{ forloop.counter }}',{{ forloop.counter }},'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Saturday');" id="tb_6"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
+        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{ forloop.counter }}">S</a>
     </li>
       <li class="mr-2">
-        <a href="javascript:rudrSwitchTab('tb_7', 'content_7{{local.id}}', {{local.id}});" id="tb_7"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
-        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{local.id}}">S</a>
+        <a href="javascript:rudrSwitchTab('tb_7{{ forloop.counter }}', 'content_7{{ forloop.counter }}',{{ forloop.counter }},'tabmenu{{ forloop.counter }}',{{ forloop.counter }},'Sunday');" id="tb_7"  class="inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50 
+        dark:hover:bg-gray-800 cursor-pointer dark:hover:text-gray-300 tabmenu{{ forloop.counter }}">S</a>
     </li>
     
 </ul>
                 </div>
                     <div class="bg-gray-300 w-full p-4"> 
-                   
-                      {% for event in local.events  %}
-                      
-                      <div id="content_1{{local.id}}" class="tabcontent{{local.id}}"> 
+                      {% if not local.events %}
+
+                       <div id="content_1{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}"> 
                         
-                        {% if event.dayOfWeek == 'MO'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
+                        
                         <p class="text-black">No event for this day Monday</p>
-                        {% endif %}
-                                    </div> 
-                       <div id="content_2{{local.id}}" class="tabcontent{{local.id}}" style="display:none;"> 
                       
-                        {% if event.dayOfWeek == 'TU'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
+                                    </div> 
+                       <div id="content_2{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;"> 
+                      
+                      
                         <p class="text-black">No event for this day Tuesday</p>
-                        {% endif %}
+                       
                         </div> 
                         
-                         <div id="content_3{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	                      {% if event.dayOfWeek == 'WE'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
-                        <p class="text-black">No event for this day Wednesday</p>
-                        {% endif %}
-</div>   
-<div id="content_4{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-		{% if event.dayOfWeek == 'TH'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
-                        <p class="text-black">No event for this day Thursday</p>
-                        {% endif %}
-</div>    
-<div id="content_5{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-{% if event.dayOfWeek == 'FR'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
-                        <p class="text-black">No event for this day Friday</p>
-                        {% endif %}
-</div>  
-
-<div id="content_6{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	{% if event.dayOfWeek == 'SA'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
-                        <p class="text-black">No event for this day Saturday</p>
-                        {% endif %}
-</div> 
-<div id="content_7{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-	{% if event.dayOfWeek == 'SU'  %} 
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        {% else %}
-                        <p class="text-black">No event for this day Sunday</p>
-                        {% endif %}
-</div>   
-                        {% endfor %} 
-                        
-{% comment %} <div id="content_1{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        <p class="text-black">No event for this day Monday</p>
-                        
-</div>   
-  <div id="content_2{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
-                        <p class="text-black">No event for this day Tuesday</p>
-                        
-</div>   
-<div id="content_3{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                         <div id="content_3{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+	                     
                         <p class="text-black">No event for this day Wednesday</p>
                         
-</div>   
-<div id="content_4{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        </div>   
+                        <div id="content_4{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+		
                         <p class="text-black">No event for this day Thursday</p>
-                        
-</div> 
-<div id="content_5{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                       
+                        </div>    
+                        <div id="content_5{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+
                         <p class="text-black">No event for this day Friday</p>
                         
-</div> 
-<div id="content_6{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        </div>  
+                        <div id="content_6{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+	
                         <p class="text-black">No event for this day Saturday</p>
-                        
-</div> 
-<div id="content_7{{local.id}}" class="tabcontent{{local.id}}" style="display:none;">
-                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        </div> 
+                        <div id="content_7{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
                         <p class="text-black">No event for this day Sunday</p>
-</div> {% endcomment %}
+                        </div>   
+                      {% else %}
 
-                        
-                        
-</div>
-        
+                  {% if local.events  %}
+
+                       
                    
-                </header>
+                     {% comment %} {% if event.dayOfWeek == 'TU'  %}  {% endcomment %}
+                       <p>{{event.description}}</p>
+                    {% comment %} {% endif %}  {% endcomment %}
+                      <div id="content_1{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;"> 
+                         {% for event in local.events %}
+                        {% if event.dayOfWeek == 'MO'  %} 
+                        <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Monday</p>
+                      </div> 
+                      <div id="content_2{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;"> 
+                         {% for event in local.events %}
+                        {% if event.dayOfWeek == 'TU'  %} 
+                            <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Tuesday</p>
+                      </div> 
+                         <div id="content_3{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+	                       {% for event in local.events %}
+                          {% if event.dayOfWeek == 'WE'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Wednesday</p>
+                        </div>   
+                        <div id="content_4{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+                         {% for event in local.events %}
+                          {% if event.dayOfWeek == 'TH'  %} 
+                                      <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Thursday</p>
+                        </div>    
+                        <div id="content_5{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+                         {% for event in local.events %}
+                          {% if event.dayOfWeek == 'FR'  %} 
+                        <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Friday</p>
+                        </div>  
+                        <div id="content_6{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+	                       {% for event in local.events %}
+                          {% if event.dayOfWeek == 'SA'  %} 
+                        <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Saturday</p>
+                        </div> 
+                        <div id="content_7{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
+	                       {% for event in local.events %}
+                          {% if event.dayOfWeek == 'SU'  %} 
+                        <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
+                        {% else %}
+                        {% endif %}
+                        {% endfor %}
+                        <p class="text-black">No event for this day Sunday</p>
+                        </div>   
+                       
+                        {% endif %} 
+                        {% endif %}                       
+                        </div>
+                        </header>
 
                 <footer class="flex items-center  justify-between leading-none p-2 md:p-4">
                     <div class="flex items-center">
@@ -280,7 +296,7 @@ Next
 </div>
 {% comment %} end pagination    {% endcomment %}
 {% include "./components/footer.html" %}
-
+<script src="{% static '/js/cards.js' %}" />
 <script >
 
 
@@ -333,27 +349,8 @@ button.addEventListener("click", () => {
   }
 });
 
+
 //tabs for cards 
-function rudrSwitchTab(rudr_tab_id, rudr_tab_content, id) {
-	// first of all we get all tab content blocks (I think the best way to get them by class names)
-  var words = "tabcontent" + id
-  console.log("words ",words)
-	var x = document.getElementsByClassName(words);
-	var i;
-	for (i = 0; i < x.length; i++) {
-		x[i].style.display = 'none'; // hide all tab content
-	}
-	document.getElementById(rudr_tab_content).style.display = 'block'; // display the content of the tab we need
- 
-	// now we get all tab menu items by class names (use the next code only if you need to highlight current tab)
-	
-  var x = document.getElementsByClassName(rudr_tab_id);
-	var i;
-	for (i = 0; i < x.length; i++) {
-		x[i].className = 'tabmenu inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50'; 
-	}
-	document.getElementById(rudr_tab_id).className = ' tabmenu active';
-}
 
         </script>
     </body>
