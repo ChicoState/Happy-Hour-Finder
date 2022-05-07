@@ -13,10 +13,11 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
       <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
       
     </head>
     <body>
+      
         {% include "./components/navbar.html" %}
 
         <div class="wrapper">
@@ -24,7 +25,7 @@
         <div class="name">
             Happy Hour Finder
         </div>
-        <div class="designation">The Best Place To Find Drink &amp; Food Deals.</div>
+        <div class="designation">The Best Place To Find Drink &amp; Food Deals in Chico.</div>
     </div>
 </div>
 
@@ -89,7 +90,52 @@ document.getElementById(divId).style.color = "black";
 }
   i = true;
 }
-  
+
+
+
+ function testAlgo(pk){
+   console.log(pk)
+   console.log("sending Test Algo")
+      $(document).ready(function () {
+    $.ajax({
+      type: "POST",
+      url: "/",
+      data: {
+        "locationPk": pk // from form
+      },
+      success: function () {
+        console.log("Success")
+       // $('#message').html("<h2>Contact Form Submitted!</h2>")
+      }
+    });
+    return false; //<---- move it here
+});
+}
+
+
+// functionality for favs
+function toggleFaved(id, pk) {
+  console.log("this is", pk)
+  console.log("toggling favs")
+  var heart = document.getElementById(id)
+  console.log(heart)
+   if (heart.classList.contains("liked")) {
+    heart.classList.remove("liked");
+    testAlgo(pk)
+  } else {
+    heart.classList.add("liked");
+    testAlgo(pk)
+  }
+}  
+
+function redirectLogin() {
+  window.location.replace("/user/login");
+}
+
+
+
+
+
    </script>
 
 
@@ -107,7 +153,14 @@ document.getElementById(divId).style.color = "black";
                 <button class="bg-gray-500 tag-card text-white font-bold py-1 px-4 rounded">
   {{local.type}}
 </button>
-<div class="heart-like-button"></div>
+{% if user.is_authenticated %}
+<div onClick="toggleFaved('heart{{forloop.counter }}','{{local.location.locationName}}')" 
+id="heart{{forloop.counter }}" class="heart-like-button"></div>
+{% else %}
+<div onClick="redirectLogin()" 
+id="heart{{forloop.counter }}" class="heart-like-button"></div>
+{% endif %}
+
                 {% comment %} <a href="#">
                     
                     <div style="background-image:
@@ -377,7 +430,7 @@ document.getElementById(divId).style.color = "black";
 <script >
 
 
-            var bubbleLifeTime = 20;
+var bubbleLifeTime = 20;
 var noOfBubbles = 100;
 
 var wrapper = document.querySelector('.wrapper');
@@ -415,20 +468,9 @@ function createCircle() {
 
   return circle;
 }
-
-const button = document.querySelector(".heart-like-button");
-
-button.addEventListener("click", () => {
-  if (button.classList.contains("liked")) {
-    button.classList.remove("liked");
-  } else {
-    button.classList.add("liked");
-  }
-});
-
-
 //tabs for cards 
 
         </script>
+
     </body>
 </html>

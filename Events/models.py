@@ -1,6 +1,7 @@
 from tabnanny import verbose
 from django.db import models
 from django.forms import ModelForm
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -68,6 +69,13 @@ class Event(models.Model):
     def __str__(self):
         return '{}'.format(self.eventTitle) + '{}'.format(self.location)
     
+
+class Fav(models.Model):
+    user = models.ForeignKey(User, related_name="likeowner",on_delete=models.DO_NOTHING)
+    location = models.ForeignKey(Location, related_name="favlocation",on_delete=models.DO_NOTHING)
+    
+
+
 
 #https://docs.djangoproject.com/en/4.0/topics/forms/modelforms/#django.forms.ModelForm
 

@@ -26,3 +26,4 @@ class EventAdmin(admin.ModelAdmin):
 
 admin.site.register(Event, EventAdmin)
 admin.site.register(Location)
+admin.site.register(Fav)

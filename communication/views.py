@@ -1,12 +1,23 @@
 from django.shortcuts import render
 # from .forms import ContactForm
-from Events.models import Event, Location
+from Events.models import Event, Location, Fav
 from django.core.paginator import Paginator
 from django.db.models import Q
 from django.views.generic import ListView
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
+@csrf_exempt
 def home_view(request):
+    if (request.method == "POST"):
+        userId = request.user
+        # print(request.POST["locationPk"])
+        name = request.POST["locationPk"]
+        favLocation = Location.objects.filter(locationName=name)
+        print(favLocation," ",userId)
+        Fav.objects.create(user=userId, location=favLocation[0])
+        print("posted")
     locationData = []
     location = Location.objects.distinct().filter(event__active = True)
     for local in location:
@@ -31,8 +42,22 @@ def home_view(request):
 }
     return render(request, "index.html",context)
 
+@login_required(login_url='user/login')
 def favs_view(request):
-    context = {}
+    location = Fav.objects.filter(user=request.user)
+    locationData = []
+    for local in location:
+    # location = Fav.objects.all()
+        events = Event.objects.filter(location = local.location, active = True).order_by('-dayOfWeek')
+        data = {
+            "location": local.location,
+            "events": events
+        }
+        locationData.append(data)
+    context = {
+        "locationData" : locationData
+    }
+    print(locationData)
     return render(request, "myfavs.html",context)
 
 class SearchResultsView(ListView):
