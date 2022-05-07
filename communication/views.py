@@ -31,6 +31,10 @@ def home_view(request):
 }
     return render(request, "index.html",context)
 
+def favs_view(request):
+    context = {}
+    return render(request, "myfavs.html",context)
+
 class SearchResultsView(ListView):
     model =  Location
     template_name = "search.html"
@@ -47,3 +51,4 @@ class SearchResultsView(ListView):
         print(object_list)
         
         return object_list
+
