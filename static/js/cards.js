@@ -70,15 +70,5 @@ function rudrSwitchTab(rudr_tab_id, rudr_tab_content, id, toggleTabGeneral, forL
             }
         }
     }
-//     for (i = 0; i < x.length; i++) {
-//       console.log("iterating at ", i)
-//     x[i].className =
-//       `tabmenu${forLoopCounter} inline-block p-4 rounded-t-lg hover:text-gray-600 hover:bg-gray-50`;
-//   }
-    // console.log("this is getting turned blue ", x[1])
-//   x[1].className =
-    // `inline-block p-4 tabmenu${forLoopCounter} active text-blue-600 bg-gray-300 rounded-t-lg active cursor-pointer dark:bg-gray-800 dark:text-blue-500`;
 }
 
-// inline-block p-4 text-blue-600 bg-gray-300 
-//         rounded-t-lg active cursor-pointer dark:bg-gray-800 dark:text-blue-500 tabmenu{{ forloop.counter }} 
