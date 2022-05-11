@@ -1,6 +1,12 @@
 from django.test import TestCase
 from django.test import Client
-from Events.models import Event, Location
+from Events.models import Event, Location, Fav
+from Events.views import submitEvent
+from Events.forms import EventForm
+from Events.admin import EventAdmin
+from django.contrib.auth.models import User
+from django.contrib.admin.sites import AdminSite
+from django.contrib.admin.options import ModelAdmin
 # Create your tests here.
 
 class EventTestCase(TestCase):
@@ -43,3 +49,37 @@ class EventTestCase(TestCase):
         event = Event.objects.get(id=1)
         field_label = event._meta.get_field('active').default
         self.assertFalse(field_label)
+
+# class EventFavTesting(TestCase):
+#     def setUp(cls):
+#         testUser = User.objects.create_user('testUser', 'testUser@test.com', 'password')
+#         testLocation = Location.objects.create(locationName = 'Joe\'s', listing = 'www.google.com')
+#         cls.testFav = Fav.objects.create(user = testUser, location = testLocation)
+#         cls.tUser = User.objects.create_user('tUser', 'tUser@test.com', 'password')
+#         cls.tLocation = Location.objects.create(locationName = 'Joe\'s', listing = 'www.google.com')
+#
+#
+#     def test_favoriteEvent(self):
+#         self.assertEqual(self.testFav.user, self.tUser)
+#         self.assertEqual(self.testFav.location, self.tLocation)
+
+
+class EventAdminTesting(TestCase):
+    @classmethod
+    def setUpTestData(cls):
+        testLocation = Location.objects.create(locationName = 'Tacklebox', listing = 'www.google.com')
+        cls.testEvent = Event.objects.create(eventTitle = 'Happy Hour Test', location = testLocation, frequency = 4,
+            dayOfWeek = 'MO', active = True, type = 'HH', time = 'always')
+
+    def setUp(self):
+        self.site = AdminSite()
+
+    def test_admin_str(self):
+        testMA = ModelAdmin(self.testEvent, self.site)
+        self.assertEqual(str(testMA), "Events.ModelAdmin")
+
+    def test_admin_default_attr(self):
+        testMA = ModelAdmin(self.testEvent, self.site)
+        self.assertEqual(testMA.actions, [])
+        self.assertEqual(testMA.list_filter, ())
+        self.assertEqual(testMA.list_display, ('__str__', ))
