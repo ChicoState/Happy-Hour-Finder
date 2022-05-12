@@ -1,26 +1,27 @@
 from django.test import TestCase
-from django.test import Client
-from Events.models import Event, Location, Fav
-from Events.views import submitEvent
-from Events.forms import EventForm
-from Events.admin import EventAdmin
-from django.contrib.auth.models import User
+# from django.test import Client
+# from django.contrib.auth.models import User
 from django.contrib.admin.sites import AdminSite
 from django.contrib.admin.options import ModelAdmin
+from Events.models import Event, Location, Fav
+# from Events.views import submitEvent
+# from Events.forms import EventForm
+# from Events.admin import EventAdmin
+
 # Create your tests here.
 
 class EventTestCase(TestCase):
 
-    def setUp(cls):
+    def setUp(self):
         testLocation = Location.objects.create(locationName = 'Tacklebox', listing = 'www.google.com')
-        cls.testEvent = Event.objects.create(eventTitle = 'Happy Hour Test', location = testLocation, frequency = 4,
-            dayOfWeek = 'MO', active = True, type = 'HH', time = 'always')
+        self.testEvent = Event.objects.create(eventTitle = 'Happy Hour Test', location = testLocation,
+            frequency = 4, dayOfWeek = 'MO', active = True, type = 'HH', time = 'always')
 
     def test_testEvent_day_of_week(self):
-       self.assertEqual(self.testEvent.dayOfWeek, 'MO')
+        self.assertEqual(self.testEvent.dayOfWeek, 'MO')
 
     def test_testEvent_location_name(self):
-       self.assertEqual(self.testEvent.location.locationName, 'Tacklebox')
+        self.assertEqual(self.testEvent.location.locationName, 'Tacklebox')
 
     def test_testEvent_location_listing(self):
         self.assertEqual(self.testEvent.location.listing, 'www.google.com')
@@ -68,8 +69,8 @@ class EventAdminTesting(TestCase):
     @classmethod
     def setUpTestData(cls):
         testLocation = Location.objects.create(locationName = 'Tacklebox', listing = 'www.google.com')
-        cls.testEvent = Event.objects.create(eventTitle = 'Happy Hour Test', location = testLocation, frequency = 4,
-            dayOfWeek = 'MO', active = True, type = 'HH', time = 'always')
+        cls.testEvent = Event.objects.create(eventTitle = 'Happy Hour Test', location = testLocation,
+            frequency = 4, dayOfWeek = 'MO', active = True, type = 'HH', time = 'always')
 
     def setUp(self):
         self.site = AdminSite()
