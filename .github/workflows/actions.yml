@@ -18,6 +18,8 @@ jobs:
           python-version: "3.8"
       - name: install dependencies
         run:
-          sudo apt install -y build-essential -r requirements.txt
+          sudo apt install -y build-essential
+        run:
+          pip install -r requirements.txt
       - name: Run Tests
         run: python3 manage.py test
