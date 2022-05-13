@@ -13,10 +13,10 @@ def submitEvent(request):
         form.save()
     return render(request, 'new_event.html', {'form': form} )
 
-def get_events(request):
-    '''retrieve all objects'''
-    allLocations = Location.objects.order_by('-locationName')
-    eventList=[]
-    for x in allLocations:
-        eventList.append(Event.objects.filter(location = x, active = True).order_by('-dayOfWeek'))
-    return render(request, 'all_events.html', {'list': eventList} )
+# def get_events(request):
+#     '''retrieve all objects'''
+#     allLocations = Location.objects.order_by('-locationName')
+#     eventList=[]
+#     for x in allLocations:
+#         eventList.append(Event.objects.filter(location = x, active = True).order_by('-dayOfWeek'))
+#     return render(request, 'all_events.html', {'list': eventList} )

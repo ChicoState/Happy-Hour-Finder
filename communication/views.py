@@ -1,12 +1,11 @@
 from django.shortcuts import render
 # from .forms import ContactForm
-from Events.models import Event, Location, Fav
-from django.core.paginator import Paginator
-from django.db.models import Q
-from django.views.generic import ListView
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-# Create your views here.
+from Events.models import Event, Location, Fav
+# from django.core.paginator import Paginator
+# from django.db.models import Q
+# from django.views.generic import ListView
 
 @csrf_exempt
 def home_view(request):
@@ -60,20 +59,17 @@ def favs_view(request):
     print(locationData)
     return render(request, "myfavs.html",context)
 
-class SearchResultsView(ListView):
-    model =  Location
-    template_name = "search.html"
-    def get_queryset(self):  # new
-        query = self.request.GET.get("q")
-        
-        # if not query:
-        #     object_list = ""
-        #     return object_list
-        object_list = Location.objects.filter(
-        Q(locationName__icontains=query) 
-        # | Q(address__icontains=query)
-    )
-        print(object_list)
-        
-        return object_list
-
+# class SearchResultsView(ListView):
+#     model =  Location
+#     template_name = "search.html"
+#     def get_queryset(self):  # new
+#         query = self.request.GET.get("q")
+#         # if not query:
+#         #     object_list = ""
+#         #     return object_list
+#         object_list = Location.objects.filter(
+#         Q(locationName__icontains=query) 
+#         # | Q(address__icontains=query)
+#     )
+#         print(object_list)
+#         return object_list

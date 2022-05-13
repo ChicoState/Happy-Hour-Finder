@@ -1,4 +1,5 @@
 from django.test import TestCase
+# from communication.views import *
 # from django.test import Client
 # from http import HTTPStatus
 # from Events import forms
@@ -24,3 +25,11 @@ class AddEventFormTests(TestCase):
     #     response = self.client.get('/event/post', follow=True)
     #     self.assertEqual(response.status_code, 200)
     #     self.assertTemplateUsed(response, 'new_event.html')
+
+    def test_home_view(self):
+        response = self.client.get('')
+        self.assertTemplateUsed(response, 'index.html')
+
+    # def test_favs_view(self):
+    #     response = self.client.get('favs')
+    #     self.assertTemplateUsed(response, 'myfavs.html')
