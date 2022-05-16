@@ -1,21 +1,36 @@
 
 {% load static %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
-  <head>
-    
-  </head>
-  <body>
-    
-    <div class="container">
-      <div class = "jumbotron">
-        <h1>Login</h1>
-        <form action="/user/login/" method="POST">{% csrf_token %}
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <title></title>
+      <meta name="description" content="">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+      
+    </head>
+    <body>
+     {% include "../components/navbar.html" %}
+     <div class="flex justify-center flex-col items-center">
+     <div class="w-full max-w-lg">
+        <form class="bg-gray-100 shadow-md rounded px-8 pt-6 pb-8 mb-4" action="/user/login/" method="POST">{% csrf_token %}
+          <h1 class="text-black text-xl">Login</h1>
           <table>
-            {{ login_form.as_table }}
+            {{ login_form|crispy }}
             <tr><td>
-              <input type="submit" class="btn btn-primary" value = "Login"/>
+              <input class="px-6 py-4 bg-blue-400 rounded" type="submit" class="btn btn-primary" value = "Login"/>
             </td></tr>
-            <tr><td>Click <a href="/user/join">here</a> to join.</td></tr>
+            <tr><td class="text-black py-2">Click <a class="text-blue-400" href="/user/join">here</a> to join.</td></tr>
           </table>
         </form>
       </div>

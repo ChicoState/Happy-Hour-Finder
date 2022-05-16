@@ -39,10 +39,17 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'communication',
+     'crispy_forms',
+     "crispy_tailwind",
 #myApps
     'Events',
     'smoketest',
 ]
+
+# CRISPY_TEMPLATE_PACK = 'uni_form'
+CRISPY_ALLOWED_TEMPLATE_PACKS = "tailwind"
+
+CRISPY_TEMPLATE_PACK = "tailwind"
 
 MIDDLEWARE = [
     'whitenoise.middleware.WhiteNoiseMiddleware',
