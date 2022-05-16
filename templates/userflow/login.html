@@ -4,13 +4,26 @@
   <head>
     
   </head>
-  <body>
+  <body style="background-color:black">
+
     
-    <div class="container">
+      
+      
+    
+    <div class="wrapper", style="color:rgb(184, 182, 182)", style="font-size:large">
+      <div class="name_container", style = "text-align:center">
+        <div class="name", style="font-size:60px;">
+        Happy Hour Finder
+        </div>
+      <div class="designation", style="font-size:30px;">The Best Place To Find Drink &amp; Food Deals in Chico.</div>
+    </div>
+    </div>
+    
+    <div class="container", style="color:white">
       <div class = "jumbotron">
         <h1>Login</h1>
         <form action="/user/login/" method="POST">{% csrf_token %}
-          <table>
+          <table style="color:white">
             {{ login_form.as_table }}
             <tr><td>
               <input type="submit" class="btn btn-primary" value = "Login"/>

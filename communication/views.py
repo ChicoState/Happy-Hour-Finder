@@ -1,9 +1,11 @@
+from pyexpat import model
+import random
 from django.shortcuts import render
 # from .forms import ContactForm
 from Events.models import Event, Location, Fav
 from django.core.paginator import Paginator
 from django.db.models import Q
-from django.views.generic import ListView
+from django.views.generic import ListView, DetailView
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 # Create your views here.
@@ -77,3 +79,51 @@ class SearchResultsView(ListView):
         
         return object_list
 
+
+def RandomEventView(request):
+    # model = Location
+    # # template_name = "RandomEvent.html"
+    # print("eent data",list(Event.objects.all()))
+    # context = {
+    #     "event" : Location.objects.all()
+    # }
+    # def get_rEvent(self):
+    #     query = self.request.GET.get("q")
+
+    #     items = list(Event.objects.all())
+    #     rEvent = Event.choice(items)    
+
+    #     return rEvent
+    template_name = "RandomEvent.html"
+    # return render(request,'RandomEvent.html',context)
+    # template_name = "RandomEvent.html"
+    model= Location
+    # def get_queryset(self, *args, **kwargs):
+    #     qs = super(RandomEventView, self).get_queryset(*args, **kwargs)
+    #     # qs = qs.order_by("-id")
+    #     # change 3 to how many random items you want
+    #     random_items = random.sample(qs, 1)
+    #     # if you want only a single random item
+    #     random_item = random.choice(qs)
+    #     return qs   
+    # def get_rEvent(self):  # new
+    query = request.GET.get("q")
+    
+    # if not query:
+    #     object_list = ""
+    #     return object_list
+    object_list = Location.objects.distinct().filter(event__active = True)
+
+    random_item = random.choice(object_list)
+
+    events = Event.objects.filter(location = random_item, active = True).order_by('-dayOfWeek')
+    data = {
+        "location": random_item,
+        "events": events
+    }
+
+    print("inside event\n\n\n")
+    print(events)
+
+    return render(request, template_name, {'random_item': data})
+    

@@ -1,11 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+
 <html>
   <head>
     
     {% load static %}
   </head>
-  <body>
+  <body style="background-color:black">
+
     
-    <div class="container">
+      
+      
+    
+      <div class="wrapper", style="color:rgb(184, 182, 182)", style="font-size:large">
+        <div class="name_container", style = "text-align:center">
+          <div class="name", style="font-size:60px;">
+          Happy Hour Finder
+          </div>
+        <div class="designation", style="font-size:30px;">The Best Place To Find Drink &amp; Food Deals in Chico.</div>
+      </div>
+      </div>
+    
+    <div class="container", style="color:white">
       <div class = "jumbotron">
         <h1>Join</h1>
         <form method="POST">{% csrf_token %}
@@ -20,3 +36,4 @@
     </div>
   </body>
 </html>
+

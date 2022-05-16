@@ -4,54 +4,37 @@
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+
 <html>
     <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge">
-      <title></title>
-      <meta name="description" content="">
-      <meta name="viewport" content="width=device-width, initial-scale=1">
-      <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
-      <link rel="stylesheet" href="{% static 'css/style.css' %}">
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{% static 'css/tailwind.css' %}">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        
     </head>
+
     <body>
-      
-        {% include "./components/navbar.html" %}
-
-        <div class="wrapper">
-    <div class="name_container">
-        <div class="name">
-            Happy Hour Finder
+            {% include "./components/navbar.html" %}
+            
+           
+    <div class="flex  justify-center">
+        <div>
+            <button onclick="window.location.href = 'RandomEvent';" style="background-color: rgb(255, 0, 0)" type="button">Show Random Event</button> 
+          </a>
         </div>
-        <div class="designation">The Best Place To Find Drink &amp; Food Deals in Chico.</div>
-    </div>
-</div>
+      </div>
 
-{% comment %} <div class="flex justify-center"> {% endcomment %}
-  {% comment %} <div class="mb-3 "> {% endcomment %}
-    {% comment %} <form action="{% url 'search' %}" method="get" class="input-group relative flex flex-wrap items-stretch w-full mb-4">
-      <input name="q"  type="search" class="cursor-pointer form-control relative flex-auto min-w-0 block w-full 
-      px-4  font-normal text-gray-700 bg-gray-100 
-       border border-solid border-gray-300  transition text-sm
-      ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 
-      focus:outline-none" placeholder="Search Resturants or Bars" aria-label="Search" aria-describedby="button-addon2"> {% endcomment %}
-      {% comment %} <button class="btn inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700  focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out flex items-center" type="button" id="button-addon2">
-        <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="search" class="w-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-          <path fill="currentColor" d="M505 442.7L405.3 343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7 44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208 208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7 17l99.7 99.7c9.4 9.4 24.6 9.4 33.9 0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7 0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128 57.2 128 128 0 70.7-57.2 128-128 128z"></path>
-        </svg>
-      </button> {% endcomment %}
-    {% comment %} </form> {% endcomment %}
-  {% comment %} </div> {% endcomment %}
-{% comment %} </div> {% endcomment %}
+      
 
-<div class="flex  justify-center">
-  <div>
-      <button onclick="window.location.href = 'RandomEvent';" style="background-color: rgb(255, 0, 0)" type="button">Show Random Event</button> 
-    </a>
-  </div>
-</div>
+    </body>
+
+
+</html>
+
 
 <script> 
 
@@ -150,7 +133,7 @@ function redirectLogin() {
 <div class="container my-12 mx-auto px-4 md:px-12">
     <div class="flex flex-wrap -mx-1 lg:-mx-4">
 
-        {% for local in locationData %}
+    
 
         <!-- Column -->
         <div class="my-1 px-1 w-full md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
@@ -158,10 +141,10 @@ function redirectLogin() {
             <!-- Article -->
             <article style="position: relative;" class="overflow-hidden rounded-lg shadow-lg bg-white">
                 <button class="bg-gray-500 tag-card text-white font-bold py-1 px-4 rounded">
-  {{local.type}}
+  {{random_item.type}}
 </button>
 {% if user.is_authenticated %}
-<div onClick="toggleFaved('heart{{forloop.counter }}','{{local.location.locationName}}')" 
+<div onClick="toggleFaved('heart{{forloop.counter }}','{{random_item.location.locationName}}')" 
 id="heart{{forloop.counter }}" class="heart-like-button"></div>
 {% else %}
 <div onClick="redirectLogin()" 
@@ -172,7 +155,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                     
                     <div style="background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0.52), rgba(0, 0, 0, 0.73)),
-    url({{local.picture}}); 
+    url({{random_item.picture}}); 
     background-size: cover;
     height:400px; 
     width: 500px; " alt="Placeholder" class="block h-auto w-full image-card" > 
@@ -180,7 +163,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                 </a> {% endcomment %}
                  <a href="#">
                     
-                    <img style="min-height: 300px; max-height: 300px;" alt="Placeholder" class="block h-auto w-full" src={{local.location.picture}}>
+                    <img style="min-height: 300px; max-height: 300px;" alt="Placeholder" class="block h-auto w-full" src={{random_item.location.picture}}>
                 </a>
                 
 
@@ -188,11 +171,11 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                     <div>
                     <h1 class="text-lg text-left m-2">
                         <a class="no-underline  text-black " >
-                            {{local.location.locationName}}
+                            {{random_item.location.locationName}}
                         </a>
                     </h1>
                     <div class="flex my-2">
-                      <a class="flex items-center hover:underline" href="{{local.listing}}" target="_blank">
+                      <a class="flex items-center hover:underline" href="{{random_item.listing}}" target="_blank">
                     <svg class="cursor-pointer mx-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-3.148 0-6 2.553-6 5.702 0 4.682 4.783 5.177 6 12.298 1.217-7.121 6-7.616 6-12.298 0-3.149-2.851-5.702-6-5.702zm0 8c-1.105 0-2-.895-2-2s.895-2 2-2 2 .895 2 2-.895 2-2 2zm12 16l-6.707-2.427-5.293 2.427-5.581-2.427-6.419 2.427 4-9 3.96-1.584c.38.516.741 1.08 1.061 1.729l-3.523 1.41-1.725 3.88 2.672-1.01 1.506-2.687-.635 3.044 4.189 1.789.495-2.021.465 2.024 4.15-1.89-.618-3.033 1.572 2.896 2.732.989-1.739-3.978-3.581-1.415c.319-.65.681-1.215 1.062-1.731l4.021 1.588 3.936 9z"/></svg>
                     <p class="text-black text-sm hover:underline">Directions</p>          
                       </a>                                                                                                                                          
@@ -236,7 +219,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
 </ul>
                 </div>
                     <div class="bg-gray-300 w-full p-4"> 
-                      {% if not local.events %}
+                      {% if not random_item.events %}
 
                        <div id="content_1{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}"> 
                         
@@ -275,7 +258,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                         </div>   
                       {% else %}
 
-                  {% if local.events  %}
+                  {% if random_item.events  %}
 
                        
                    
@@ -283,7 +266,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                        <p>{{event.description}}</p>
                     {% comment %} {% endif %}  {% endcomment %}
                       <div id="content_1{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" > 
-                         {% for event in local.events %}
+                         {% for event in random_item.events %}
                         {% if event.dayOfWeek == 'MO'  %} 
                         <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -300,7 +283,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                         
                       </div> 
                       <div id="content_2{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;"> 
-                         {% for event in local.events %}
+                         {% for event in random_item.events %}
                         {% if event.dayOfWeek == 'TU'  %} 
                             <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -316,7 +299,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
 
                       </div> 
                          <div id="content_3{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
-	                       {% for event in local.events %}
+	                       {% for event in random_item.events %}
                           {% if event.dayOfWeek == 'WE'  %} 
                             <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -332,7 +315,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
 
                         </div>   
                         <div id="content_4{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
-                         {% for event in local.events %}
+                         {% for event in random_item.events %}
                           {% if event.dayOfWeek == 'TH'  %} 
                                       <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -347,7 +330,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                         </script>
                         </div>    
                         <div id="content_5{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
-                         {% for event in local.events %}
+                         {% for event in random_item.events %}
                           {% if event.dayOfWeek == 'FR'  %} 
                         <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -362,7 +345,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                         </script>
                         </div>  
                         <div id="content_6{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
-	                       {% for event in local.events %}
+	                       {% for event in random_item.events %}
                           {% if event.dayOfWeek == 'SA'  %} 
                         <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -377,7 +360,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                         </script>
                         </div> 
                         <div id="content_7{{ forloop.counter }}" class="tabcontent{{ forloop.counter }}" style="display:none;">
-	                       {% for event in local.events %}
+	                       {% for event in random_item.events %}
                           {% if event.dayOfWeek == 'SU'  %} 
                         <p class="text-black">{{event.description}}{{ forloop.counter }} {{event.eventTitle}} {{event.dayOfWeek}}</p>
                         <script type = "text/javascript"> 
@@ -401,7 +384,7 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
                     <div class="flex items-center">
                    
 <svg class="cursor-pointer mx-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 2c0-1.104-.896-2-2-2h-10c-1.104 0-2 .896-2 2v20c0 1.104.896 2 2 2h10c1.104 0 2-.896 2-2v-20zm-8.5 0h3c.276 0 .5.224.5.5s-.224.5-.5.5h-3c-.276 0-.5-.224-.5-.5s.224-.5.5-.5zm1.5 20c-.553 0-1-.448-1-1s.447-1 1-1c.552 0 .999.448.999 1s-.447 1-.999 1zm5-3h-10v-14.024h10v14.024z"/></svg>
-<a href={{local.website}} target="_blank">
+<a href={{random_item.website}} target="_blank">
 <svg class="cursor-pointer mx-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm10 12c0 .685-.07 1.354-.202 2h-3.853c.121-1.283.129-2.621 0-4h3.853c.132.646.202 1.315.202 2zm-.841-4h-3.5c-.383-1.96-1.052-3.751-1.948-5.278 2.435.977 4.397 2.882 5.448 5.278zm-5.554 0h-2.605v-5.658c1.215 1.46 2.117 3.41 2.605 5.658zm-4.605-5.658v5.658h-2.605c.488-2.248 1.39-4.198 2.605-5.658zm0 7.658v4h-2.93c-.146-1.421-.146-2.577 0-4h2.93zm0 6v5.658c-1.215-1.46-2.117-3.41-2.605-5.658h2.605zm2 5.658v-5.658h2.605c-.488 2.248-1.39 4.198-2.605 5.658zm0-7.658v-4h2.93c.146 1.421.146 2.577 0 4h-2.93zm-4.711-11.278c-.896 1.527-1.565 3.318-1.948 5.278h-3.5c1.051-2.396 3.013-4.301 5.448-5.278zm-6.087 7.278h3.853c-.121 1.283-.129 2.621 0 4h-3.853c-.132-.646-.202-1.315-.202-2s.07-1.354.202-2zm.639 6h3.5c.383 1.96 1.052 3.751 1.948 5.278-2.435-.977-4.397-2.882-5.448-5.278zm12.87 5.278c.896-1.527 1.565-3.318 1.948-5.278h3.5c-1.051 2.396-3.013 4.301-5.448 5.278z"/></svg>
 </a>                
 </div>
@@ -418,7 +401,6 @@ id="heart{{forloop.counter }}" class="heart-like-button"></div>
         </div>
         <!-- END Column -->
 
-        {% endfor %}
 
        
 

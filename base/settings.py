@@ -42,6 +42,14 @@ INSTALLED_APPS = [
 #myApps
     'Events',
     'smoketest',
+    'django_crontab',
+]
+#python manage.py dumpdata takes the backup of the databse
+#python manage.py loaddata restores our backup
+#cronjobs runs the code every 5000min 
+#in a new environment/machine configure cronjob by $Python manage.py crontab add then run server
+CRONJOBS = [
+    ('*/5000 * * * *', 'python manage.py dumpdata>dump.json') 
 ]
 
 MIDDLEWARE = [
