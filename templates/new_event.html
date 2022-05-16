@@ -3,6 +3,7 @@
 
 
 {% load static %}
+{% load crispy_forms_tags %}
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -25,12 +26,18 @@
   
 
     <div class="new-event">
-        <h2>Share a New Event!</h2>
+        <div class="flex justify-center flex-col items-center">
+            <h2 class="my-4">Share a New Event!</h2>
+        <div class="w-full max-w-lg">
+        <div class="bg-gray-300 shadow-md rounded px-8 pt-6 pb-8 mb-4">
         <form class="site-form"method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit"value="Submit"/>
+            {{ form|crispy }}
+            <input class="px-4 py-4 bg-blue-400" type="submit"value="Submit"/>
         </form>
+    </div>
+    </div>
+    </div>
     </div>
 
 
