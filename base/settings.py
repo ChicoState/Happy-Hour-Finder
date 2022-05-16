@@ -100,7 +100,7 @@ DATABASES = {
 
 # postgres://nyjgwguaismfkv:ad4fe38641f0eea146954691fac5678b715f41aa30813761e97b1a0a8aa8235f@ec2-3-218-47-9.compute-1.amazonaws.com:5432/dc2ro1vj5k090m
 
-
+# rr
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
